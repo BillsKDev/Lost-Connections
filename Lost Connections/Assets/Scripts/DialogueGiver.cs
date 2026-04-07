@@ -7,6 +7,7 @@ public class DialogueGiver : MonoBehaviour
 
     private void Start()
     {
+        StartDialogue();
     }
 
     public void StartDialogue()
