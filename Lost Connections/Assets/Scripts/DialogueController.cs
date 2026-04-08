@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine.UI;
 using Ink.Runtime;
 using System.Text;
+using System.Collections.Generic;
+using System.Collections;
 
 public class DialogueController : MonoBehaviour
 {
@@ -62,10 +64,27 @@ public class DialogueController : MonoBehaviour
         {
             if (tag.StartsWith("E."))
             {
-                string eventName = tag.Remove(0, 2);
-                GameEvent.RaiseEvent(eventName);
+                string eventName = tag.Substring(2);
+
+                if (eventName.StartsWith("Delay"))
+                {
+                    string[] parts = eventName.Split('.');
+                    float delay = float.Parse(parts[0].Substring(5));
+                    string delayedEvent = parts[1];
+                    StartCoroutine(RaiseEventAfterDelay(delay, delayedEvent));
+                }
+                else
+                {
+                    GameEvent.RaiseEvent(eventName);
+                }
             }
         }
+    }
+
+    IEnumerator RaiseEventAfterDelay(float seconds, string eventName)
+    {
+        yield return new WaitForSeconds(seconds);
+        GameEvent.RaiseEvent(eventName);
     }
 
     public void RefreshToCurrentScreen()

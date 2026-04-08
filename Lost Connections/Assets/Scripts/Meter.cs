@@ -46,7 +46,6 @@ public class Meter : MonoBehaviour
         if (_clampValues)
             _targetFamilyValue = Mathf.Clamp(_targetFamilyValue, _minValue, _maxValue);
 
-        Debug.Log($"Family Slider adjusted by {amount}. Target value: {_targetFamilyValue}");
     }
 
     public void AdjustSocialSlider(float amount)
@@ -56,7 +55,6 @@ public class Meter : MonoBehaviour
         if (_clampValues)
             _targetSocialValue = Mathf.Clamp(_targetSocialValue, _minValue, _maxValue);
 
-        Debug.Log($"Social Slider adjusted by {amount}. Target value: {_targetSocialValue}");
     }
 
     public void SetFamilySlider(float value)
@@ -66,7 +64,6 @@ public class Meter : MonoBehaviour
         if (_clampValues)
             _targetFamilyValue = Mathf.Clamp(_targetFamilyValue, _minValue, _maxValue);
 
-        Debug.Log($"Family Slider set to: {_targetFamilyValue}");
     }
 
     public void SetSocialSlider(float value)
@@ -76,7 +73,6 @@ public class Meter : MonoBehaviour
         if (_clampValues)
             _targetSocialValue = Mathf.Clamp(_targetSocialValue, _minValue, _maxValue);
 
-        Debug.Log($"Social Slider set to: {_targetSocialValue}");
     }
 
     public void AdjustBothSliders(float familyAmount, float socialAmount)

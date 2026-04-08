@@ -1,4 +1,4 @@
-It's my first day of school, and I made a few friends. I just got added to a groupchat lets see what they say...
+It's my first day of school, I just got told to check my messages for the new group chat.
  * 1
  #E.Groupchat
     -> END

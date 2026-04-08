@@ -1,5 +1,5 @@
 Hey man, you wanna go
-drinking tonight?
+drinking tonight with the guys?
 
  * Sure, let's do it
  -> social1
@@ -14,4 +14,5 @@ drinking tonight?
 === family1 ===
 # E.Family1
 - Wow.
+#E.Delay3.Dad
 -> END
