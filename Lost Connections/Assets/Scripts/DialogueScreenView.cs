@@ -12,6 +12,9 @@ public class DialogueScreenView : MonoBehaviour
         var controller = FindFirstObjectByType<DialogueController>();
         controller._storyText = _storyText;
         controller._choiceButtons = _choiceButtons;
-        controller.RefreshToCurrentScreen();
+
+        // Only repaint if the story is already running
+        if (DialogueController._story != null)
+            controller.RefreshToCurrentScreen();
     }
 }

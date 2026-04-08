@@ -10,12 +10,15 @@ public class DialogueController : MonoBehaviour
 
     [HideInInspector] public TMP_Text _storyText;
     [HideInInspector] public Button[] _choiceButtons;
+    private string _lastStoryText = "";
 
     public void StartDialog(TextAsset dialog)
     {
         _story = new Story(dialog.text);
         RefreshView();
     }
+
+
 
     void RefreshView()
     {
@@ -25,8 +28,10 @@ public class DialogueController : MonoBehaviour
             storyText.AppendLine(_story.Continue());
             HandleTags();
         }
+        _lastStoryText = storyText.ToString();
 
-        _storyText.SetText(storyText);
+        if (_storyText != null)           // add this null check
+            _storyText.SetText(_lastStoryText);
 
         ShowChoiceButtons();
     }
@@ -65,7 +70,9 @@ public class DialogueController : MonoBehaviour
 
     public void RefreshToCurrentScreen()
     {
-        if (_storyText == null || _choiceButtons == null) return;
-        RefreshView();
+        if (_storyText == null) return;
+
+        _storyText.SetText(_lastStoryText);
+        ShowChoiceButtons();
     }
 }
