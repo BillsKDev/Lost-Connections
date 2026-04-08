@@ -8,8 +8,8 @@ public class DialogueController : MonoBehaviour
 {
     public static Story _story { get; private set; }
 
-    [SerializeField] TMP_Text _storyText;
-    [SerializeField] Button[] _choiceButtons;
+    [HideInInspector] public TMP_Text _storyText;
+    [HideInInspector] public Button[] _choiceButtons;
 
     public void StartDialog(TextAsset dialog)
     {
@@ -61,5 +61,11 @@ public class DialogueController : MonoBehaviour
                 GameEvent.RaiseEvent(eventName);
             }
         }
+    }
+
+    public void RefreshToCurrentScreen()
+    {
+        if (_storyText == null || _choiceButtons == null) return;
+        RefreshView();
     }
 }
